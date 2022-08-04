@@ -9,6 +9,7 @@ hillstone1 = {
     "host": "10.0.0.1",
     "port": "2233",
     "username": "hillstone",
+    "password": password,
     "session_log": "output.txt"
 }
 

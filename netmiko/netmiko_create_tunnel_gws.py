@@ -5,14 +5,14 @@ import IPy
 from getpass import getpass
 
 """Use getpass to input the password, but it only works in terminal via python file_name.py"""
-#password = getpass()
+password = getpass()
 
 hillstone1 = {
     "device_type": "hillstone",
     "host": "10.0.0.1",
     "port": "2233",
     "username": "hillstone",
-    "password": "Hillstone@123!",
+    "password": password,
     "session_log": "output.txt"
 }
 
