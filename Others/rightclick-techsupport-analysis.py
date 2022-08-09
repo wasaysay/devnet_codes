@@ -1,6 +1,8 @@
 import re
 import requests
 from requests_toolbelt import MultipartEncoder
+import sys
+import webbrowser
 
 url = 'http://10.88.16.40:8000/tacapp/techanl/'
 sss = requests.Session()
@@ -20,8 +22,13 @@ cookie = {}
 cookie['csrftoken'] = res.headers['Set-Cookie'].split(';')[0].split('=')[1]
 #print(f'cookie is {cookie}')
 
-filename = r'tech_support_20965_2022_8_4_23_31_39'
-filepath = r'D:\tech_support_20965_2022_8_4_23_31_39'
+# Get file name from sys.argv.
+filepath = sys.argv[1]
+filename = filepath.split('\\')[-1]
+
+
+#print(f"filename is {filename}")
+#print(f"filepath is {filepath}")
 
 # See enctype="multipart/form-data" in Chrome.
 # The fields are found over wireshark captures, also see <input> label in the form in html.
@@ -38,5 +45,10 @@ headers = {
 }
 res = sss.post(url= url, data=m, cookies=cookie, headers=headers)
 
-with open(r'results.html', 'w+', encoding='utf-8') as f:
+
+with open(r'tech-support-analysis-result.html', 'w+', encoding='utf-8') as f:
     f.write(res.text)
+
+# open the result with default web browser.
+webbrowser.open("tech-support-analysis-result.html")
+
